@@ -54,9 +54,11 @@ export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
   pipe(
     unSeed(s) + d,
     _ => lcgA * _,
-    _ => _ % lcgM,
+    _ => mod(_, lcgM),
     unsafeMkSeed
   );
+
+export const lcgNext: (s: Seed) => Seed = s => lcgPertub(lcgC)(s);
 
 // -------------------------------------------------------------------------------------
 // pipeables
