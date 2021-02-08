@@ -1,5 +1,5 @@
 {
-  "name": "@noday/lcg",
+  "name": "@no-days/lcg",
   "dependencies": {},
   "peerDependencies": {
     "fp-ts": "^2.9.5"
