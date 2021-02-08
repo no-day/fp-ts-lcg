@@ -21,7 +21,7 @@ const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
 export const mkSeed: (n: number) => Seed = n =>
   pipe(
     Math.floor(n),
-    _ => mod(seedMax - seedMin, _),
+    _ => mod(_, seedMax - seedMin),
     _ => _ + seedMin,
     unsafeMkSeed
   );
@@ -44,7 +44,7 @@ const lcgC: number = 0;
 
 export const seedMin: number = 1;
 
-export const seedMax: number = lcgM - 1;
+export const seedMax: number = lcgM;
 
 // -------------------------------------------------------------------------------------
 // combinators
@@ -52,8 +52,9 @@ export const seedMax: number = lcgM - 1;
 
 export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
   pipe(
-    unSeed(s) + d,
-    _ => lcgA * _,
+    unSeed(s),
+    _ => _ * lcgA,
+    _ => _ + d,
     _ => mod(_, lcgM),
     unsafeMkSeed
   );
