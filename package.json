@@ -1,12 +1,14 @@
 {
   "name": "@no-day/lcg",
   "version": "1.0.0-rc.1",
+  "homepage": "github.com/no-day/lcg",
   "dependencies": {},
   "peerDependencies": {
     "fp-ts": "^2.9.5"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
+    "docs-ts": "^0.5.3",
     "fast-check": "^2.12.1",
     "fp-ts": "^2.9.5",
     "jest": "^26.6.3",
@@ -16,7 +18,8 @@
   "scripts": {
     "test": "yarn jest",
     "build": "tsc",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "docs": "yarn docs-ts"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts"

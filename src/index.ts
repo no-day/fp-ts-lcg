@@ -1,3 +1,7 @@
+/**
+ * @since 1.0.0
+ */
+
 import { Eq, eqNumber } from "fp-ts/Eq";
 import { pipe } from "fp-ts/lib/function";
 import { Ord, ordNumber } from "fp-ts/lib/Ord";
@@ -7,6 +11,9 @@ import { Ordering } from "fp-ts/lib/Ordering";
 // model
 // -------------------------------------------------------------------------------------
 
+/**
+ * @since 1.0.0
+ */
 export type Seed = {
   readonly _URI: unique symbol;
   readonly _A: number;
@@ -18,6 +25,9 @@ export type Seed = {
 
 const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
 
+/**
+ * @since 1.0.0
+ */
 export const mkSeed: (n: number) => Seed = n =>
   pipe(
     Math.floor(n),
@@ -30,6 +40,9 @@ export const mkSeed: (n: number) => Seed = n =>
 // destructors
 // -------------------------------------------------------------------------------------
 
+/**
+ * @since 1.0.0
+ */
 export const unSeed: (s: Seed) => number = s => s._A;
 
 // -------------------------------------------------------------------------------------
@@ -42,14 +55,23 @@ const lcgA: number = 48271;
 
 const lcgC: number = 0;
 
+/**
+ * @since 1.0.0
+ */
 export const seedMin: number = 1;
 
+/**
+ * @since 1.0.0
+ */
 export const seedMax: number = lcgM;
 
 // -------------------------------------------------------------------------------------
 // combinators
 // -------------------------------------------------------------------------------------
 
+/**
+ * @since 1.0.0
+ */
 export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
   pipe(
     unSeed(s),
@@ -59,30 +81,49 @@ export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
     unsafeMkSeed
   );
 
+/**
+ * @since 1.0.0
+ */
 export const lcgNext: (s: Seed) => Seed = s => lcgPertub(lcgC)(s);
 
 // -------------------------------------------------------------------------------------
 // pipeables
 // -------------------------------------------------------------------------------------
 
+/**
+ * @since 1.0.0
+ */
 export const equals: (s1: Seed, s2: Seed) => boolean = (s1, s2) =>
   eqNumber.equals(unSeed(s1), unSeed(s2));
 
+/**
+ * @since 1.0.0
+ */
 export const compare: (s1: Seed, s2: Seed) => Ordering = (s1, s2) =>
   ordNumber.compare(unSeed(s1), unSeed(s2));
+
 // -------------------------------------------------------------------------------------
 // instances
 // -------------------------------------------------------------------------------------
 
+/**
+ * @since 1.0.0
+ */
 export const eqSeed: Eq<Seed> = {
   equals,
 };
 
+/**
+ * @since 1.0.0
+ */
 export const ordSeed: Ord<Seed> = {
   compare,
   equals,
 };
 
+/**
+ * @since 1.0.0
+ */
 export const seed: Eq<Seed> & Ord<Seed> = { ...ordSeed, ...eqSeed };
 
 // -------------------------------------------------------------------------------------
