@@ -4,7 +4,7 @@ on:
   push:
     branches: ["master", $default-branch]
   pull_request:
-    branches: [$default-branch]
+    branches: ["master", $default-branch]
 
 jobs:
   build:
@@ -20,6 +20,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+      - run: yarn install
+      - run: yarn run build
+      - run: yarn test
