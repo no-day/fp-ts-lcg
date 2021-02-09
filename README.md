@@ -44,3 +44,7 @@ node index.js
 ```
 
 The generated seeds are pseudo random. Meaning, that whenever the same initial seed is chosen (here it's 3532), the results of the next seeds will be always the same. The generated seeds will be eqaully distributed in the range of `lcg.seedMin` and `lcg.seedMax`.
+
+# Dcoumentation
+
+- [API](https://no-day.github.io/lcg/modules/index.ts.html)

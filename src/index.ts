@@ -13,6 +13,7 @@ import { Ordering } from "fp-ts/lib/Ordering";
 
 /**
  * @since 1.0.0
+ * @category model
  */
 export type Seed = {
   readonly _URI: unique symbol;
@@ -27,6 +28,7 @@ const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
 
 /**
  * @since 1.0.0
+ * @category constructors
  */
 export const mkSeed: (n: number) => Seed = n =>
   pipe(
@@ -42,6 +44,7 @@ export const mkSeed: (n: number) => Seed = n =>
 
 /**
  * @since 1.0.0
+ * @category destructors
  */
 export const unSeed: (s: Seed) => number = s => s._A;
 
@@ -57,11 +60,13 @@ const lcgC: number = 0;
 
 /**
  * @since 1.0.0
+ * @category constants
  */
 export const seedMin: number = 1;
 
 /**
  * @since 1.0.0
+ * @category constants
  */
 export const seedMax: number = lcgM;
 
@@ -71,6 +76,7 @@ export const seedMax: number = lcgM;
 
 /**
  * @since 1.0.0
+ * @category combinators
  */
 export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
   pipe(
@@ -83,6 +89,7 @@ export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
 
 /**
  * @since 1.0.0
+ * @category combinators
  */
 export const lcgNext: (s: Seed) => Seed = s => lcgPertub(lcgC)(s);
 
@@ -92,12 +99,14 @@ export const lcgNext: (s: Seed) => Seed = s => lcgPertub(lcgC)(s);
 
 /**
  * @since 1.0.0
+ * @category Eq
  */
 export const equals: (s1: Seed, s2: Seed) => boolean = (s1, s2) =>
   eqNumber.equals(unSeed(s1), unSeed(s2));
 
 /**
  * @since 1.0.0
+ * @category Ord
  */
 export const compare: (s1: Seed, s2: Seed) => Ordering = (s1, s2) =>
   ordNumber.compare(unSeed(s1), unSeed(s2));
@@ -108,6 +117,7 @@ export const compare: (s1: Seed, s2: Seed) => Ordering = (s1, s2) =>
 
 /**
  * @since 1.0.0
+ * @category instances
  */
 export const eqSeed: Eq<Seed> = {
   equals,
@@ -115,6 +125,7 @@ export const eqSeed: Eq<Seed> = {
 
 /**
  * @since 1.0.0
+ * @category instances
  */
 export const ordSeed: Ord<Seed> = {
   compare,
@@ -123,8 +134,9 @@ export const ordSeed: Ord<Seed> = {
 
 /**
  * @since 1.0.0
+ * @category instances
  */
-export const seed: Eq<Seed> & Ord<Seed> = { ...ordSeed, ...eqSeed };
+export const seed: Eq<Seed> & Ord<Seed> = { equals, compare };
 
 // -------------------------------------------------------------------------------------
 // util
