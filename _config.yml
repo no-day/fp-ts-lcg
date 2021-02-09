@@ -6,4 +6,4 @@ search_enabled: true
 # Aux links for the upper right navigation
 aux_links:
   '@no-day/lcg on GitHub':
-    - 'github.com/no-day/lcg'
+    - 'https://github.com/no-day/lcg'
