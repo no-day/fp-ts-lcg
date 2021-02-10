@@ -9,7 +9,7 @@ A port of [purescript-lcg](https://github.com/purescript/purescript-lcg).
 Uses `fp-ts` as a peer dependency.
 
 ```bash
-npm install fp-ts @no-day/lcg
+npm install fp-ts @no-day/fp-ts-lcg
 ```
 
 ## JavaScript Example
