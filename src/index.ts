@@ -27,6 +27,8 @@ export type Seed = {
 const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
 
 /**
+ * Creates a new `Seed`. Any number can be given as it will be rounded and overflows are wrapped internally.
+ *
  * @since 1.0.0
  * @category constructors
  */
@@ -43,6 +45,8 @@ export const mkSeed: (n: number) => Seed = n =>
 // -------------------------------------------------------------------------------------
 
 /**
+ * Turn a `Seed` back into a `number`
+ *
  * @since 1.0.0
  * @category destructors
  */
