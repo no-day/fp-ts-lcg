@@ -60,17 +60,6 @@ const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
 export const mkSeed: (n: number) => Seed = n =>
   pipe(Math.floor(n), _ => mod(_, seedMax - seedMin), unsafeMkSeed);
 
-/**
- * Create a random seed.
- *
- * @since 1.0.0
- * @category constructors
- */
-export const randomSeed: IO<Seed> = pipe(
-  randomInt(seedMin, seedMax),
-  io.map(mkSeed)
-);
-
 // -------------------------------------------------------------------------------------
 // destructors
 // -------------------------------------------------------------------------------------
