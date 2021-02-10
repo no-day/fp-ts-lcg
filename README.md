@@ -43,7 +43,7 @@ node index.js
 1819954887
 ```
 
-The generated seeds are pseudo random. Meaning, that whenever the same initial seed is chosen (here it's 3532), the results of the next seeds will be always the same. The generated seeds will be eqaully distributed in the range of `lcg.seedMin` and `lcg.seedMax`.
+The generated seeds are pseudo random. Meaning, that whenever the same initial seed is chosen (here it's 3532), the results of the next seeds will be always the same. The generated seeds will be equally distributed in the range of `lcg.seedMin` and `lcg.seedMax`.
 
 # Dcoumentation
 
