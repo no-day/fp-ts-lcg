@@ -47,4 +47,4 @@ The generated seeds are pseudo random. Meaning, that whenever the same initial s
 
 # Dcoumentation
 
-- [API](https://no-day.github.io/lcg/modules/index.ts.html)
+- [API](https://no-day.github.io/fp-ts-lcg/modules/index.ts.html)
