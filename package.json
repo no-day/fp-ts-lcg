@@ -1,7 +1,7 @@
 {
-  "name": "@no-day/lcg",
+  "name": "@no-day/fp-ts-lcg",
   "version": "1.0.0-rc.1",
-  "homepage": "https://github.com/no-day/lcg",
+  "homepage": "https://github.com/no-day/fp-ts-lcg",
   "dependencies": {},
   "peerDependencies": {
     "fp-ts": "^2.9.5"

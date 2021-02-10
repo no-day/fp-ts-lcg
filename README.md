@@ -1,4 +1,4 @@
-# lcg
+# fp-ts-lcg
 
 A seeded pseudorandom number generator based on the linear congruential generator algorithm.
 
