@@ -107,6 +107,8 @@ Added in v1.0.0
 
 ## mkSeed
 
+Creates a new `Seed`. Any number can be given as it will be rounded and overflows are wrapped internally.
+
 **Signature**
 
 ```ts
@@ -118,6 +120,8 @@ Added in v1.0.0
 # destructors
 
 ## unSeed
+
+Turn a `Seed` back into a `number`
 
 **Signature**
 
