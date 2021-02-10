@@ -33,12 +33,7 @@ const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
  * @category constructors
  */
 export const mkSeed: (n: number) => Seed = n =>
-  pipe(
-    Math.floor(n),
-    _ => mod(_, seedMax - seedMin),
-    _ => _ + seedMin,
-    unsafeMkSeed
-  );
+  pipe(Math.floor(n), _ => mod(_, seedMax - seedMin), unsafeMkSeed);
 
 // -------------------------------------------------------------------------------------
 // destructors
