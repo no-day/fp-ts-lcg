@@ -24,7 +24,6 @@ Added in v1.0.0
   - [seedMin](#seedmin)
 - [constructors](#constructors)
   - [mkSeed](#mkseed)
-  - [randomSeed](#randomseed)
 - [destructors](#destructors)
   - [unSeed](#unseed)
 - [instances](#instances)
@@ -114,18 +113,6 @@ Creates a new `Seed`. Any number can be given as it will be rounded and overflow
 
 ```ts
 export declare const mkSeed: (n: number) => Seed
-```
-
-Added in v1.0.0
-
-## randomSeed
-
-Create a random seed.
-
-**Signature**
-
-```ts
-export declare const randomSeed: IO<Seed>
 ```
 
 Added in v1.0.0
