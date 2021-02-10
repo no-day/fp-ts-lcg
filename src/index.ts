@@ -3,9 +3,12 @@
  */
 
 import { Eq, eqNumber } from "fp-ts/Eq";
-import { pipe } from "fp-ts/lib/function";
-import { Ord, ordNumber } from "fp-ts/lib/Ord";
-import { Ordering } from "fp-ts/lib/Ordering";
+import { pipe } from "fp-ts/function";
+import { IO } from "fp-ts/IO";
+import * as io from "fp-ts/IO";
+import { randomInt } from "fp-ts/lib/Random";
+import { Ord, ordNumber } from "fp-ts/Ord";
+import { Ordering } from "fp-ts/Ordering";
 
 // -------------------------------------------------------------------------------------
 // model
@@ -19,33 +22,6 @@ export type Seed = {
   readonly _URI: unique symbol;
   readonly _A: number;
 };
-
-// -------------------------------------------------------------------------------------
-// constructors
-// -------------------------------------------------------------------------------------
-
-const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
-
-/**
- * Creates a new `Seed`. Any number can be given as it will be rounded and overflows are wrapped internally.
- *
- * @since 1.0.0
- * @category constructors
- */
-export const mkSeed: (n: number) => Seed = n =>
-  pipe(Math.floor(n), _ => mod(_, seedMax - seedMin), unsafeMkSeed);
-
-// -------------------------------------------------------------------------------------
-// destructors
-// -------------------------------------------------------------------------------------
-
-/**
- * Turn a `Seed` back into a `number`
- *
- * @since 1.0.0
- * @category destructors
- */
-export const unSeed: (s: Seed) => number = s => s._A;
 
 // -------------------------------------------------------------------------------------
 // constants
@@ -68,6 +44,44 @@ export const seedMin: number = 1;
  * @category constants
  */
 export const seedMax: number = lcgM;
+
+// -------------------------------------------------------------------------------------
+// constructors
+// -------------------------------------------------------------------------------------
+
+const unsafeMkSeed: (_A: Seed["_A"]) => Seed = _A => ({ _A } as Seed);
+
+/**
+ * Creates a new `Seed`. Any number can be given as it will be rounded and overflows are wrapped internally.
+ *
+ * @since 1.0.0
+ * @category constructors
+ */
+export const mkSeed: (n: number) => Seed = n =>
+  pipe(Math.floor(n), _ => mod(_, seedMax - seedMin), unsafeMkSeed);
+
+/**
+ * Create a random seed.
+ *
+ * @since 1.0.0
+ * @category constructors
+ */
+export const randomSeed: IO<Seed> = pipe(
+  randomInt(seedMin, seedMax),
+  io.map(mkSeed)
+);
+
+// -------------------------------------------------------------------------------------
+// destructors
+// -------------------------------------------------------------------------------------
+
+/**
+ * Turn a `Seed` back into a `number`
+ *
+ * @since 1.0.0
+ * @category destructors
+ */
+export const unSeed: (s: Seed) => number = s => s._A;
 
 // -------------------------------------------------------------------------------------
 // combinators
