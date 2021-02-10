@@ -33,6 +33,8 @@ jobs:
       - name: Install and Build
         run: |
           yarn install
+          yarn run build
+          yarn test
           yarn docs
 
       - name: Deploy
