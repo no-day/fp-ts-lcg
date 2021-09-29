@@ -77,7 +77,7 @@ export const unSeed: (s: Seed) => number = s => s._A;
  * @since 1.0.0
  * @category combinators
  */
-export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
+export const lcgPerturb: (d: number) => (s: Seed) => Seed = d => s =>
   pipe(
     unSeed(s),
     _ => _ * lcgA,
@@ -90,7 +90,7 @@ export const lcgPertub: (d: number) => (s: Seed) => Seed = d => s =>
  * @since 1.0.0
  * @category combinators
  */
-export const lcgNext: (s: Seed) => Seed = s => lcgPertub(lcgC)(s);
+export const lcgNext: (s: Seed) => Seed = s => lcgPerturb(lcgC)(s);
 
 // -------------------------------------------------------------------------------------
 // pipeables
