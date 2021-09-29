@@ -4,9 +4,6 @@
 
 import { Eq, eqNumber } from "fp-ts/Eq";
 import { pipe } from "fp-ts/function";
-import { IO } from "fp-ts/IO";
-import * as io from "fp-ts/IO";
-import { randomInt } from "fp-ts/lib/Random";
 import { Ord, ordNumber } from "fp-ts/Ord";
 import { Ordering } from "fp-ts/Ordering";
 
