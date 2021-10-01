@@ -23,7 +23,7 @@ describe("seed", () => {
     fc.assert(
       fc.property(fcNumber, fcNumber, (n1, n2) => {
         const seed = $.mkSeed(n1);
-        const nextSeed = $.lcgPertub(n2)(seed);
+        const nextSeed = $.lcgPerturb(n2)(seed);
         const num = $.unSeed(nextSeed);
 
         expect(num).toBeGreaterThanOrEqual($.seedMin);
