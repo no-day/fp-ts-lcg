@@ -18,7 +18,7 @@ Added in v1.0.0
   - [compare](#compare)
 - [combinators](#combinators)
   - [lcgNext](#lcgnext)
-  - [lcgPertub](#lcgpertub)
+  - [lcgPerturb](#lcgperturb)
 - [constants](#constants)
   - [seedMax](#seedmax)
   - [seedMin](#seedmin)
@@ -71,12 +71,12 @@ export declare const lcgNext: (s: Seed) => Seed
 
 Added in v1.0.0
 
-## lcgPertub
+## lcgPerturb
 
 **Signature**
 
 ```ts
-export declare const lcgPertub: (d: number) => (s: Seed) => Seed
+export declare const lcgPerturb: (d: number) => (s: Seed) => Seed
 ```
 
 Added in v1.0.0
